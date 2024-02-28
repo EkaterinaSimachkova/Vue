@@ -1,3 +1,4 @@
+import axios from 'axios';
 export default async function getPokemonCharacters(count) {
     try{
         let result = []

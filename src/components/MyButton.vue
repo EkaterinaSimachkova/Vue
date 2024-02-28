@@ -1,5 +1,5 @@
 <template>
-    <button class="btn btn-dark" type="button" @click="btnClick"><slot></slot></button>
+    <button class="btn btn-outline-secondary" type="button" @click="btnClick"><slot></slot></button>
 </template>
 
 <script>

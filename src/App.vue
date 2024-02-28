@@ -1,11 +1,11 @@
 <template>
   <div>
     <header class="d-grid gap-2 d-md-flex justify-content-md-end mb-5">
-      <my-input @change-value="inputValue=$event"></my-input>
+      <my-input @change-value="inputValue=$event"/>
       <my-button @btn-click="search">Найти</my-button>
     </header>
     <div class="d-flex flex-row justify-content-around mb-3">
-        <my-radio v-for="api in apis" :api="api" @change-api="apiChecked"></my-radio>
+        <my-radio v-for="api in apis" :obj="api" @change-radio="apiChecked"/>
     </div>
     <my-content :images="images"/>
   </div>
@@ -14,12 +14,13 @@
 <script>
 import MyInput from '@/components/MyInput.vue'
 import MyRadio from '@/components/MyRadio.vue'
-import MyButton from './components/MyButton.vue'
-import MyContent from './components/MyContent.vue'
+import MyButton from '@/components/MyButton.vue'
+import MyContent from '@/components/MyContent.vue'
 
-import getRickAndMortyCharacters from './functions/getRickAndMortyCharacters.js'
-import getPokemonCharacters from './functions/getPokemonCharacters.js'
-import getDogs from './functions/getDogs.js'
+import getRickAndMortyCharacters from '@/functions/getRickAndMortyCharacters.js'
+import getPokemonCharacters from '@/functions/getPokemonCharacters.js'
+import getDogs from '@/functions/getDogs.js'
+
 
 export default {
   components: {

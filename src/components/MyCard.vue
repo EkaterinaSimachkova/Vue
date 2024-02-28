@@ -21,7 +21,7 @@
 </script>
 
 <style scoped>
-.image {
+.image-class {
     width: calc((100% - 80px) / 4);
 }
 

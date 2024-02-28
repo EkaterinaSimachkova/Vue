@@ -1,3 +1,4 @@
+import axios from 'axios';
 export default async function getDogs(count) {
     try{
         let result = []

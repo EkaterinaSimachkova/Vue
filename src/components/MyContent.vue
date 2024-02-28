@@ -36,7 +36,7 @@ import MyButton from './MyButton.vue'
                  isFlex: true,
                  flexClass: "main-content",
                  gridClass: "row row-cols-4",
-                 flexImageClass: "image",
+                 flexImageClass: "image-class",
                  gridBigImageClass: "col-6",
                  gridSmallImageClass: "col-3",
             }

@@ -1,3 +1,4 @@
+import axios from 'axios';
 export default async function getRickAndMortyCharacters(count) {
     try{
         let countArr = [...Array(count+1).keys()].slice(1)

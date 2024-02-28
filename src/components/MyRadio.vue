@@ -1,26 +1,26 @@
 <template>
     <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="api" checked :value="api.name" :key="api.id" v-model="apiChecked" @change="changeApi">
-        <label class="form-check-label">{{ api.name }}</label>
+        <input class="form-check-input" type="radio" name="radio-button" checked :value="obj.name" :key="obj.id" v-model="radioChecked" @change="changeRadio">
+        <label class="form-check-label">{{ obj.name }}</label>
     </div>
 </template>
 
 <script>
     export default {
         props: {
-            api: {
+            obj: {
                 type: Object,
                 require: true
             }
         },
         data() {
             return {
-                apiChecked: null,
+                radioChecked: null,
             }
         },
         methods: {
-            changeApi() {
-                this.$emit('changeApi', this.apiChecked)
+            changeRadio() {
+                this.$emit('changeRadio', this.radioChecked)
             }
         }
     }
