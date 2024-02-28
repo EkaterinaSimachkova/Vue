@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '@/views/HomeView.vue'
 import FavView from '@/views/FavView.vue'
+import CardView from '@/views/CardView.vue'
 
 
 const routes = [
@@ -11,8 +12,14 @@ const routes = [
     },
     {
         path: '/favourites',
-        name: 'favourites',
+        name: 'fav',
         component: FavView
+    },
+    {
+        path: '/:id',
+        name: 'card',
+        component: CardView,
+        props: true
     }
 ]
 

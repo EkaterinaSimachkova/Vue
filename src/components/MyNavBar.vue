@@ -13,8 +13,7 @@
 
 <style scoped>
 nav {
-  padding: 30px;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
 }
 
 nav a {

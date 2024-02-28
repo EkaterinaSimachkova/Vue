@@ -40,9 +40,11 @@ export const useFavStore = defineStore('favStore', {
             }
         },
         toggleFav(id) {
-            const idx = this.images.findIndex(item => item.id ==id)
+            const idx = this.images.findIndex(item => item.id == id)
             this.images[idx].isFav = !this.images[idx].isFav
+        },
+        info(id) {
+            return this.images.find(item => item.id == id)
         }
     }
-    
 })
