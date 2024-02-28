@@ -6,7 +6,10 @@ import getDogs from '@/functions/getDogs.js'
 
 export const useFavStore = defineStore('favStore', {
     state: () => ({
-          images: []
+          images: [],
+          imagesRickAndMorty: [],
+          imagesPokemon: [],
+          imagesDog: [],        
     }),
     getters: {
         favs() {
@@ -18,13 +21,33 @@ export const useFavStore = defineStore('favStore', {
             try {
                 switch (api) {
                     case 'RickAndMorty':
-                        this.images = await getRickAndMortyCharacters(count)
+                        if (count == this.imagesRickAndMorty.length) {
+                            this.images = this.imagesRickAndMorty
+                        } else {
+                            this.images = this.imagesRickAndMorty = await getRickAndMortyCharacters(count)
+                            console.log(this.images)
+                            console.log(this.imagesRickAndMorty)
+                        }            
                         break
+
                     case 'Pokemon':
-                        this.images = await getPokemonCharacters(count)
+                        if (count == this.imagesPokemon.length) {
+                            this.images = this.imagesPokemon
+                        } else {
+                            this.images = this.imagesPokemon = await getPokemonCharacters(count)
+                            console.log(this.images)
+                            console.log(this.imagesPokemon)
+                        } 
                         break
+
                     case 'Dog':
-                        this.images = await getDogs(count)
+                        if (count == this.imagesDog.length) {
+                            this.images = this.imagesDog
+                        } else {
+                            this.images = this.imagesDog = await getDogs(count)
+                            console.log(this.images)
+                            console.log(this.imagesDog)
+                        } 
                         break
                 }
 
