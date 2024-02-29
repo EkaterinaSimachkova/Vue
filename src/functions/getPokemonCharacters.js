@@ -7,7 +7,6 @@ export default async function getPokemonCharacters(count) {
         for (let item of data) {
             let id = item.url.split('/').at(-2)
             const pokemon = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`)
-            console.log(pokemon.data.sprites.front_default)
             result.push({id: +id, name: item.name, url: pokemon.data.sprites.front_default})
         }
         return result

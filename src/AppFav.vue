@@ -5,16 +5,9 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import MyNavBar from '@/components/MyNavBar.vue'
 
-
-export default {
-  components: {
-    MyNavBar
-  },
-  
-}
 </script>
 
 <style>

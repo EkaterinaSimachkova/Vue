@@ -5,21 +5,11 @@
     </div>
 </template>
 
-<script>
+<script setup>
 import MyFavContent from '@/components/MyFavContent.vue'
 import { useFavStore } from '@/stores/FavStore.js'
-  
-  
-export default {
-    components: {
-      MyFavContent
-    },
-    data() {
-      return {
-        favStore: useFavStore()
-      }
-    }
-}
+
+const favStore = useFavStore()
 
 </script>
 

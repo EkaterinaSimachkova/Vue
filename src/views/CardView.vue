@@ -8,16 +8,11 @@
     </div>
 </template>
 
-<script>
+<script setup>
 import { useFavStore } from '@/stores/FavStore.js'
 
-export default {
-    data() {
-        return {
-            favStore: useFavStore(),
-        }
-    }
-}
+const favStore = useFavStore()
+
 </script>
 
 <style scoped>

@@ -17,31 +17,21 @@
     </div>
 </template>
 
-<script>
+<script setup>
 import MyCard from './MyCard.vue'
 import MyButton from './MyButton.vue'
 
 import { useFavStore } from '@/stores/FavStore.js'
 
+const favStore = useFavStore()
 
-    export default {
-        props: {
-            images: {
-                type: Object,
-                require: true
-            }
-        },
-        components: {
-            MyCard,
-            MyButton
-        },
-        data() {
-            return {
-                 favStore: useFavStore(),
-            }
-        },
-        
+const props = defineProps({
+    images: {
+        type: Object,
+        require: true
     }
+})
+
 </script>
 
 <style scoped>

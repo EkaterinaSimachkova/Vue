@@ -1,73 +1,99 @@
 import { defineStore } from 'pinia'
+import { ref, reactive, computed, watch } from 'vue'
 import getRickAndMortyCharacters from '@/functions/getRickAndMortyCharacters.js'
 import getPokemonCharacters from '@/functions/getPokemonCharacters.js'
 import getDogs from '@/functions/getDogs.js'
 
 
-export const useFavStore = defineStore('favStore', {
-    state: () => ({
-          images: [],
-          imagesRickAndMorty: [],
-          imagesPokemon: [],
-          imagesDog: [],        
-    }),
-    getters: {
-        favs() {
-            return this.images.filter(item => item.isFav)
+export const useFavStore = defineStore('favStore', () => {
+    const apis = [
+        { 
+          name: 'RickAndMorty',
+          id: 1
+        },
+        {
+          name: 'Pokemon',
+          id: 2
+        },
+        {
+          name: 'Dog',
+          id: 3
         }
-    },
-    actions: {
-        async setImages(api, count = 12) {
-            try {
-                switch (api) {
-                    case 'RickAndMorty':
-                        if (count == this.imagesRickAndMorty.length) {
-                            this.images = this.imagesRickAndMorty
-                        } else {
-                            this.images = this.imagesRickAndMorty = await getRickAndMortyCharacters(count)
-                            console.log(this.images)
-                            console.log(this.imagesRickAndMorty)
-                        }            
-                        break
+    ]
+    const images = ref([])
+    const imagesRickAndMorty = ref([])
+    const imagesPokemon = ref([])
+    const imagesDog = ref([])    
+    
+    const imagesInLocalStorage = localStorage.getItem('cards')
 
-                    case 'Pokemon':
-                        if (count == this.imagesPokemon.length) {
-                            this.images = this.imagesPokemon
-                        } else {
-                            this.images = this.imagesPokemon = await getPokemonCharacters(count)
-                            console.log(this.images)
-                            console.log(this.imagesPokemon)
-                        } 
-                        break
+    if (imagesInLocalStorage) {
+        images.value = JSON.parse(imagesInLocalStorage)._value
+        console.log(JSON.parse(imagesInLocalStorage))
+    }
 
-                    case 'Dog':
-                        if (count == this.imagesDog.length) {
-                            this.images = this.imagesDog
-                        } else {
-                            this.images = this.imagesDog = await getDogs(count)
-                            console.log(this.images)
-                            console.log(this.imagesDog)
-                        } 
-                        break
-                }
+    watch(
+        () => images, 
+        (state) => localStorage.setItem('cards', JSON.stringify(state)), 
+        {deep: true}
+    )
 
-                for (let item of this.images) {
-                    item.isFav = false
-                }
-        
-                console.log(this.images)
-                console.log(typeof(this.images))
-        
-            } catch(err) {
-                console.log(err)
+    const favs = computed(() => {
+        return images.value.filter(item => item.isFav)
+    })
+
+    const info = (id) => {
+        return images.value.find(item => item.id == id)
+    }
+
+    const toggleFav = (id) => {
+        const idx = images.value.findIndex(item => item.id == id)
+        images.value[idx].isFav = !images.value[idx].isFav
+    }
+    
+    const setImages = async (api, count = 12) => {
+        try {
+            switch (api) {
+                case 'RickAndMorty':
+                    if (count == imagesRickAndMorty.value.length) {
+                        images.value = imagesRickAndMorty.value
+                    } else {
+                        images.value = imagesRickAndMorty.value = await getRickAndMortyCharacters(count)
+                    }            
+                    break
+
+                case 'Pokemon':
+                    if (count == imagesPokemon.value.length) {
+                        images.value = imagesPokemon.value
+                    } else {
+                        images.value = imagesPokemon.value = await getPokemonCharacters(count)
+                    } 
+                    break
+
+                case 'Dog':
+                    if (count == imagesDog.value.length) {
+                        images.value = imagesDog.value
+                    } else {
+                        images.value = imagesDog.value = await getDogs(count)
+                    } 
+                    break
             }
-        },
-        toggleFav(id) {
-            const idx = this.images.findIndex(item => item.id == id)
-            this.images[idx].isFav = !this.images[idx].isFav
-        },
-        info(id) {
-            return this.images.find(item => item.id == id)
+
+            for (let item of images.value) {
+                item.isFav = false
+            }
+    
+        } catch(err) {
+            console.log(err)
         }
+    }
+
+    return {
+        apis,
+        images,
+        favs,
+        info,
+        toggleFav,
+        setImages
     }
 })

@@ -5,19 +5,17 @@
     </div>
 </template>
 
-<script>
-    export default {
-        data() {
-            return {
-                inputValue: ''
-            }
-        },
-        methods: {
-            changeValue() {
-                this.$emit('changeValue', this.inputValue)
-            }
-        }
-    }
+<script setup>
+import { ref } from 'vue'
+
+const emit = defineEmits(['changeValue'])
+
+const inputValue = ref('')
+
+const changeValue = () => {
+    emit('changeValue', inputValue.value)
+}
+
 </script>
 
 <style scoped>

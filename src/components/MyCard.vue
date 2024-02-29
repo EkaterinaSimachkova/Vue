@@ -5,19 +5,18 @@
     </div>
 </template>
 
-<script>
-    export default {
-        props: {
-            image: {
-                type: Object,
-                require: true
-            },
-            cardClass: {
-                type: String,
-                require: true
-            }
+<script setup>
+    const props = defineProps({
+        image: {
+            type: Object,
+            require: true
         },
-    }
+        cardClass: {
+            type: String,
+            require: true
+        }
+    })
+
 </script>
 
 <style scoped>
