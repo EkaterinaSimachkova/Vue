@@ -17,7 +17,7 @@ import MyRadio from '@/components/MyRadio.vue'
 import MyButton from '@/components/MyButton.vue'
 import MyFavContent from '@/components/MyFavContent.vue'
 
-import { ref, onBeforeMount } from 'vue'
+import { ref } from 'vue'
 import { useFavStore } from '@/stores/FavStore.js'
 
 const favStore = useFavStore()
@@ -41,7 +41,6 @@ const search = () => {
       alert('Введено отрицательное число или ноль!')
   }
 }
-
 </script>
 
 <style scoped>

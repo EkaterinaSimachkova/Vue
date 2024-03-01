@@ -7,9 +7,12 @@
 
         <div class="container m-0 p-0">
             <div :class="isFlex ? flexClass : gridClass">
-                <my-card v-for="(image, index) in images" :image="image" :cardClass="isFlex ? flexImageClass :
-                                                                                    (index % 6 == 4 || index % 6 == 5) ? 
-                                                                                    gridBigImageClass : gridSmallImageClass">
+                <my-card v-for="(image, index) in images" 
+                    :image="image" 
+                    :showButtons="false" 
+                    :cardClass="isFlex ? flexImageClass :
+                                (index % 6 == 4 || index % 6 == 5) ? 
+                                gridBigImageClass : gridSmallImageClass">
                 </my-card>
             </div>
         </div>

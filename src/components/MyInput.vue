@@ -15,7 +15,6 @@ const inputValue = ref('')
 const changeValue = () => {
     emit('changeValue', inputValue.value)
 }
-
 </script>
 
 <style scoped>

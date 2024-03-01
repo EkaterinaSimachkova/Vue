@@ -20,6 +20,7 @@ export const useFavStore = defineStore('favStore', () => {
           id: 3
         }
     ]
+    
     const images = ref([])
     const imagesRickAndMorty = ref([])
     const imagesPokemon = ref([])

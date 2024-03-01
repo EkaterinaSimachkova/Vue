@@ -10,7 +10,6 @@
 
 <script setup>
 import { useFavStore } from '@/stores/FavStore.js'
-
 const favStore = useFavStore()
 
 </script>

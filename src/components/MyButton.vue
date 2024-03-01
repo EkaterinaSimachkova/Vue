@@ -8,7 +8,6 @@ const emit = defineEmits(['btnClick'])
 const btnClick = () => {
     emit('btnClick')
 }
-
 </script>
 
 <style scoped>

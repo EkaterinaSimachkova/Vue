@@ -15,4 +15,5 @@ import MyNavBar from '@/components/MyNavBar.vue'
   margin: 50px;
   text-align: center;
 }
+
 </style>

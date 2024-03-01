@@ -7,8 +7,8 @@
 
 <script setup>
 import MyFavContent from '@/components/MyFavContent.vue'
-import { useFavStore } from '@/stores/FavStore.js'
 
+import { useFavStore } from '@/stores/FavStore.js'
 const favStore = useFavStore()
 
 </script>

@@ -2,10 +2,19 @@
     <div :class="cardClass" :style="{height: '300px'}"> 
         <img class='image-icon' :src="image.url" :key="image.id"/>
         <p class='image-title'>{{image.name.length > 20 ? image.name.slice(0, 20) + "…" : image.name}}</p>
+        <div v-if="showButtons" class="d-flex flex-row justify-content-between">
+            <my-button @btn-click="btnInfo">Подробнее</my-button>
+            <div>
+                <my-button v-if="!image.isFav" @btn-click="btnFav">❤️️</my-button>
+                <my-button v-else @btn-click="btnFav">💔</my-button>
+            </div>
+        </div>
     </div>
 </template>
 
 <script setup>
+    import MyButton from './MyButton.vue'
+
     const props = defineProps({
         image: {
             type: Object,
@@ -14,9 +23,23 @@
         cardClass: {
             type: String,
             require: true
+        },
+        showButtons: {
+            type: Boolean,
+            require: true
         }
     })
 
+    const emit = defineEmits(['btnInfo', 'btnFav'])
+
+    const btnInfo = () => {
+        emit('btnInfo', props.image.id)
+    }
+
+    const btnFav = () => {
+        emit('btnFav', props.image.id)
+    }
+    
 </script>
 
 <style scoped>

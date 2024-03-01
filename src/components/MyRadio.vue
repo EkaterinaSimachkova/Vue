@@ -21,8 +21,7 @@ const radioChecked = ref(null)
 
 const changeRadio = () => {
     emit('changeRadio', radioChecked.value)
-}
-    
+}  
 </script>
 
 <style scoped>

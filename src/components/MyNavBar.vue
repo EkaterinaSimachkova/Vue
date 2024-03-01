@@ -5,7 +5,7 @@
     </nav>
 </template>
 
-<script>
+<script setup>
 
 </script>
 
